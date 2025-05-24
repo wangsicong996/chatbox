@@ -1,0 +1,33 @@
+name: Build and Upload Artifact
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Using Node.js 18, can be changed if needed
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run dev script
+        run: npm run dev
+
+      - name: Run package script
+        run: npm run package
+
+      - name: Run package:all script
+        run: npm run package:all
+
+      - name: Upload Linux build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-build-artifacts # You can customize this name
+          path: release/build/ # Upload the entire contents of the release/build directory
