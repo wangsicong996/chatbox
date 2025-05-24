@@ -17,8 +17,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run dev script
-        run: npm run dev
+      - name: Set permissions for Electron sandbox
+        run: |
+          sudo chown root node_modules/electron/dist/chrome-sandbox || true
+          sudo chmod 4755 node_modules/electron/dist/chrome-sandbox || true
 
       - name: Run package script
         run: npm run package
