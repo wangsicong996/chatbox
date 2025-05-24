@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: '18' # Using Node.js 18, can be changed if needed
           cache: 'pnpm'
+          pnpm-version: 9
 
       - name: Install dependencies
         run: pnpm install
