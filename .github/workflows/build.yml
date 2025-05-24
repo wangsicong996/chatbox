@@ -5,6 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      UPDATE_CHANNEL: beta
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
